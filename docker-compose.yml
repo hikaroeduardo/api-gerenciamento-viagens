@@ -1,0 +1,22 @@
+services:
+  frotas-db:
+    image: postgres
+    container_name: frotas-db
+    restart: always
+    environment:
+      POSTGRES_USER: frotas
+      POSTGRES_PASSWORD: passprod
+      POSTGRES_DB: frotas-db
+    ports:
+      - "5432:5432"
+
+  frotas-test-db:
+    image: postgres
+    container_name: frotas-test-db
+    restart: always
+    environment:
+      POSTGRES_USER: frotas-test
+      POSTGRES_PASSWORD: passtest
+      POSTGRES_DB: frotas-test-db
+    ports:
+      - "5433:5432"

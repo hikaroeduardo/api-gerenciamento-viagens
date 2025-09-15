@@ -1,0 +1,3 @@
+ALTER TABLE "requests" ADD CONSTRAINT "requests_id_driver_drivers_id_fk" FOREIGN KEY ("id_driver") REFERENCES "public"."drivers"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
+ALTER TABLE "requests" ADD CONSTRAINT "requests_id_vehicle_vehicles_id_fk" FOREIGN KEY ("id_vehicle") REFERENCES "public"."vehicles"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
+ALTER TABLE "requests" ADD CONSTRAINT "requests_id_request_status_requests_status_id_fk" FOREIGN KEY ("id_request_status") REFERENCES "public"."requests_status"("id") ON DELETE no action ON UPDATE no action;
