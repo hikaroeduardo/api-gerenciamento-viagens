@@ -1,2 +1,4 @@
 node_modules
 requisicoes.http
+.env
+.env.test
