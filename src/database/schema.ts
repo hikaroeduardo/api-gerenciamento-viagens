@@ -1,17 +1,11 @@
-import {
-    pgTable,
-    varchar,
-    uuid,
-    boolean,
-    timestamp,
-} from "drizzle-orm/pg-core";
+import { pgTable, text, uuid, boolean, timestamp } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
 
 export const userTable = pgTable("users", {
-    id: uuid().primaryKey(),
-    name: varchar().notNull(),
-    email: varchar().notNull().unique(),
-    password: varchar().notNull(),
+    id: uuid().primaryKey().defaultRandom(),
+    name: text().notNull(),
+    email: text().notNull().unique(),
+    password: text().notNull(),
     status: boolean().default(true),
     createdAt: timestamp("created_at", { withTimezone: true })
         .defaultNow()
@@ -22,8 +16,8 @@ export const userTable = pgTable("users", {
 });
 
 export const driverTable = pgTable("drivers", {
-    id: uuid().primaryKey(),
-    name: varchar().notNull(),
+    id: uuid().primaryKey().defaultRandom(),
+    name: text().notNull(),
     status: boolean().default(true),
     createdAt: timestamp("created_at", { withTimezone: true })
         .defaultNow()
@@ -34,9 +28,9 @@ export const driverTable = pgTable("drivers", {
 });
 
 export const vehicleTable = pgTable("vehicles", {
-    id: uuid().primaryKey(),
-    model: varchar().notNull(),
-    plate: varchar().notNull().unique(),
+    id: uuid().primaryKey().defaultRandom(),
+    model: text().notNull(),
+    plate: text().notNull().unique(),
     status: boolean().default(true),
     createdAt: timestamp("created_at", { withTimezone: true })
         .defaultNow()
@@ -47,13 +41,13 @@ export const vehicleTable = pgTable("vehicles", {
 });
 
 export const requestsTable = pgTable("requests", {
-    id: uuid().primaryKey(),
+    id: uuid().primaryKey().defaultRandom(),
     departureDate: timestamp("departure_date", {
         withTimezone: true,
     }).notNull(),
     returnDate: timestamp("return_date", { withTimezone: true }).notNull(),
-    applicant: varchar().notNull(),
-    destination: varchar().notNull(),
+    applicant: text().notNull(),
+    destination: text().notNull(),
     idDriver: uuid("id_driver").references(() => driverTable.id),
     idVehicle: uuid("id_vehicle").references(() => vehicleTable.id),
     idRequestStatus: uuid("id_request_status").references(
@@ -68,8 +62,8 @@ export const requestsTable = pgTable("requests", {
 });
 
 export const requestStatusTable = pgTable("requests_status", {
-    id: uuid().primaryKey(),
-    name: varchar().notNull(),
+    id: uuid().primaryKey().defaultRandom(),
+    name: text().notNull(),
     status: boolean().default(true),
     createdAt: timestamp("created_at", { withTimezone: true })
         .defaultNow()

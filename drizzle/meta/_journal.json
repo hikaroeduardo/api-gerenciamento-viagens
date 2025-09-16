@@ -15,6 +15,20 @@
       "when": 1757946913619,
       "tag": "0001_melted_shocker",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1758034586040,
+      "tag": "0002_silly_gateway",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1758035332811,
+      "tag": "0003_steady_night_thrasher",
+      "breakpoints": true
     }
   ]
 }

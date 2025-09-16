@@ -1,10 +1,17 @@
 import fastify from "fastify";
+import {
+    serializerCompiler,
+    validatorCompiler,
+} from "fastify-type-provider-zod";
+
+import { createUserRoute } from "./routes/users/create-user";
 
 const app = fastify();
 
-app.get("/", async (request, reply) => {
-    return { ok: true };
-});
+app.setSerializerCompiler(serializerCompiler);
+app.setValidatorCompiler(validatorCompiler);
+
+app.register(createUserRoute);
 
 app.listen({ port: 3000 }, (err, address) => {
     if (err) {
