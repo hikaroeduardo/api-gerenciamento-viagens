@@ -19,9 +19,12 @@ export const createUserService = async ({
 
     const hashPassword = await bcrypt.hash(password, 10);
 
+    const lowercaseName = name.toLowerCase();
+    const lowercaseEmail = email.toLowerCase();
+
     const { userId } = await postCreateUser({
-        name,
-        email,
+        name: lowercaseName,
+        email: lowercaseEmail,
         password: hashPassword,
     });
 

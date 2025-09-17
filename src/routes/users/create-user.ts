@@ -1,6 +1,4 @@
-import {
-    FastifyPluginAsyncZod
-} from "fastify-type-provider-zod";
+import { FastifyPluginAsyncZod } from "fastify-type-provider-zod";
 
 import { createUserService } from "../../services/users/create-user-service";
 import { UserAlreadyExists } from "../../errors/user-already-exists";
