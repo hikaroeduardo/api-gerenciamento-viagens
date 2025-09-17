@@ -1,6 +1,5 @@
 import {
-    FastifyPluginAsyncZod,
-    ZodTypeProvider,
+    FastifyPluginAsyncZod
 } from "fastify-type-provider-zod";
 
 import { createUserService } from "../../services/users/create-user-service";
