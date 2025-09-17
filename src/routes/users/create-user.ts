@@ -1,15 +1,25 @@
-import { FastifyPluginAsyncZod } from "fastify-type-provider-zod";
+import {
+    FastifyPluginAsyncZod,
+    ZodTypeProvider,
+} from "fastify-type-provider-zod";
 
 import { createUserService } from "../../services/users/create-user-service";
 import { UserAlreadyExists } from "../../errors/user-already-exists";
-import { createUserSchema } from "../../schemas/users/create-user-schema";
+
+import {
+    createUserSchema,
+    responseCreateUserSchema,
+} from "../../schemas/users/create-user-schema";
 
 export const createUserRoute: FastifyPluginAsyncZod = async (server) => {
     server.post(
         "/users",
         {
             schema: {
+                tags: ["Users"],
+                summary: "Criar novo usuário",
                 body: createUserSchema,
+                response: responseCreateUserSchema,
             },
         },
         async (request, reply) => {
