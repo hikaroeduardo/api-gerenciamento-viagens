@@ -21,6 +21,15 @@ app.register(fastifySwagger, {
                 "API destinada para gerenciamento de frotas de uma organização.",
             version: "1.0.0",
         },
+        components: {
+            securitySchemes: {
+                bearerAuth: {
+                    type: "http",
+                    scheme: "bearer",
+                    bearerFormat: "JWT",
+                },
+            },
+        },
     },
     transform: jsonSchemaTransform,
 });
