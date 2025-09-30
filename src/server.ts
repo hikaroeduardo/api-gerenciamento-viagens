@@ -7,8 +7,9 @@ import {
 import { fastifySwagger } from "@fastify/swagger";
 import { fastifySwaggerUi } from "@fastify/swagger-ui";
 
-import { createUserRoute } from "./routes/users/create-user";
 import { loginRoute } from "./routes/auth/login";
+import { createUserRoute } from "./routes/users/create-user";
+import { getProfileRoute } from "./routes/users/get-profile";
 
 const app = fastify();
 
@@ -30,8 +31,12 @@ app.register(fastifySwaggerUi, {
 app.setSerializerCompiler(serializerCompiler);
 app.setValidatorCompiler(validatorCompiler);
 
-app.register(createUserRoute);
+// auth route
 app.register(loginRoute);
+
+// user routes
+app.register(createUserRoute);
+app.register(getProfileRoute);
 
 app.listen({ port: 3000 }, (err, address) => {
     if (err) {
